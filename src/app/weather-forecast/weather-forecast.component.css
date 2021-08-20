@@ -9,7 +9,7 @@
 .weather-forecast-list {
     display: flex;
     flex-direction: row;
-    padding-left: 16px;
+    padding-left: 1px;
     list-style: none;
     width: auto;
 }

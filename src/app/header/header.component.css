@@ -2,15 +2,15 @@
     height: 50px;
     line-height: 25, 78px;
     text-align: center;
-    padding-top: 13px;
     border-bottom: 2px solid #BDBDBD;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .header-title {
-    text-align: center;
     color: #828282;
     font-style: normal;
-    font-weight: normal;
     font-weight: 400;
     font-size: 22px;
 }

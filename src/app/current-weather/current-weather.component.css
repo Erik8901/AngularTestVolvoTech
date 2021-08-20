@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px;
     color: #C9CAD0;
 }
 
@@ -37,7 +37,7 @@
     margin: 0 auto;
 }
 
-.temp-container {
+.temp-wind-container {
     display: flex;
     flex-direction: column;
     color: #828282;
