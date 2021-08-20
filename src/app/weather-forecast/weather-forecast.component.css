@@ -1,0 +1,42 @@
+.weather-forecast-title {
+    color: #828282;
+}
+
+.weather-forecast-list-container {
+    overflow-x: scroll;
+}
+
+.weather-forecast-list {
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+    list-style: none;
+    width: auto;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 224px;
+    width: 61px; */
+    text-align: center;
+    padding: 1rem 1rem 1rem 1rem;
+    height: 230px;
+    justify-content: space-evenly;
+    color: #C9CAD0;
+}
+
+.forecast-icon {
+    height: 46px;
+    width: 42px;
+}
+
+.temp-windspeed-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #818288;
+    width: 4rem;
+    height: 4rem;
+}
