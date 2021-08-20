@@ -9,7 +9,7 @@
 .weather-forecast-list {
     display: flex;
     flex-direction: row;
-    padding-left: 1rem;
+    padding-left: 16px;
     list-style: none;
     width: auto;
 }
@@ -21,9 +21,10 @@ li {
     /* height: 224px;
     width: 61px; */
     text-align: center;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 10px 0px 16px 0px;
     height: 230px;
     justify-content: space-evenly;
+    width: 30%;
     color: #C9CAD0;
 }
 
@@ -37,6 +38,15 @@ li {
     flex-direction: column;
     justify-content: space-evenly;
     color: #818288;
-    width: 4rem;
-    height: 4rem;
+    width: 112px;
+    height: 96px;
+    color: #BDBDBD;
+}
+
+.temp-text {
+    padding: 0px 0px 0px 15px
+}
+
+.wind-speed-text {
+    /* padding: 0px 15px 0px 0px; */
 }

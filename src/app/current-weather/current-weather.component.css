@@ -20,7 +20,7 @@
     flex-direction: row;
     text-align: center;
     justify-content: space-evenly;
-    width: 46%;
+    width: 30%;
     margin: 0 auto;
     margin-top: 16px;
     font-size: 19px;
@@ -31,6 +31,12 @@
     text-transform: capitalize;
 }
 
+.current-sky {
+    Height: 46px;
+    Width: 42px;
+    margin: 0 auto;
+}
+
 .temp-container {
     display: flex;
     flex-direction: column;
@@ -38,8 +44,10 @@
     text-align: center;
 }
 
-.current-sky {
-    Height: 46px;
-    Width: 42px;
-    margin: 0 auto;
+.temp-text {
+    padding: 0px 0px 0px 15px;
+}
+
+.wind-speed-text {
+    padding: 10px 0px 0px 0px;
 }
