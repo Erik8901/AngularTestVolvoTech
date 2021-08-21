@@ -27,20 +27,21 @@ export class WeatherForecastComponent implements OnInit {
     this.api.apiCallForeCast().subscribe((data: any) => {
      //s console.log(data.properties.timeseries)
       data.properties.timeseries.forEach((element: any) => {
+     //   console.log(element.time)
         if (element.time.includes("T12")) {
-          console.log(element)
+          //console.log(element)
           this.weatherList.push(element)
         }// Get forecast at 12:00 
       });
      // console.log(this.weatherList)
       this.weatherList.slice(0, 7).forEach((day: any) => {
-        
+        //console.log(day.time)
         var d = new Date(day.time.slice(0, 10));
-      
+    
         
         
         var dayName = this.weekDays[d.getDay()];
-       console.log(dayName)
+        
         let dayObj: any = {
           nextDay: ""
         }
