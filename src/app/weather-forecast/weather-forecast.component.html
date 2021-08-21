@@ -1,12 +1,12 @@
 <div class="weather-forecast-list-container">
-    <ul class="weather-forecast-list">
+    <!-- <ul class="weather-forecast-list">
         <li *ngFor="let day of daysList">
             <span>{{day.nextDay}}</span>
         </li>
-    </ul>
+    </ul> -->
     <ul class="weather-forecast-list">
         <li *ngFor="let day of foreCastList">
-            <!-- <span>{{day.day}}</span> -->
+            <span>{{day.day}}</span>
             <img class="forecast-icon" src='./../assets/weathericon/png/{{day.weatherIcon}}.png' alt="error loading icon" />
             <div class="temp-windspeed-container">
                 <span class="temp-text">{{day.currentTemperatureMin}}-{{day.currentTemperatureMax}} °C</span>

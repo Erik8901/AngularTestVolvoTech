@@ -60,6 +60,7 @@ export class WeatherForecastComponent implements OnInit {
           currentTemperatureMin: ""
         };
 
+        foreCastObj.day = d.toString().slice(0, 4)
        //foreCastObj.day = dayName.slice(0, 3)
         foreCastObj.currentTemperatureMin = String(day.data.next_6_hours.details.air_temperature_min).slice(0, 2)
         foreCastObj.currentTemperatureMax = String(day.data.next_6_hours.details.air_temperature_max).slice(0, 2)
