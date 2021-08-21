@@ -19,6 +19,7 @@ export class WeatherForecastComponent implements OnInit {
   ]
   weatherList: any = [];
   foreCastList: any = [];
+  daysList: any = []
 
   constructor(private api: GetApiService) { }
 
@@ -27,15 +28,27 @@ export class WeatherForecastComponent implements OnInit {
      //s console.log(data.properties.timeseries)
       data.properties.timeseries.forEach((element: any) => {
         if (element.time.includes("T12")) {
-        
+          console.log(element)
           this.weatherList.push(element)
         }// Get forecast at 12:00 
       });
      // console.log(this.weatherList)
       this.weatherList.slice(0, 7).forEach((day: any) => {
+        
         var d = new Date(day.time.slice(0, 10));
+      
+        
+        
         var dayName = this.weekDays[d.getDay()];
-        console.log(day)
+       console.log(dayName)
+        let dayObj: any = {
+          nextDay: ""
+        }
+        dayObj.nextDay = dayName
+        this.daysList.push(dayObj)
+       // console.log(this.days)
+     
+        //   console.log(day)
         let foreCastObj: any = {
           day: "",
           temp: "",
@@ -52,11 +65,19 @@ export class WeatherForecastComponent implements OnInit {
         foreCastObj.windSpeed = String(day.data.instant.details.wind_speed).slice(0, 1)
         foreCastObj.weatherIcon = day.data.next_6_hours.summary.symbol_code
 
+        this.foreCastList.push(foreCastObj)
+        //console.log(this.foreCastList.length)
+        if(this.foreCastList.length === 7) {
+          console.log("sev")
+         
+          this.foreCastList.shift()
+       // console.log(this.foreCastList)
+        }
        
-        var dayToRemove = "Thursday"
+        // var dayToRemove = "Thursday"
         
-        var d = new Date();
-        var today: any = d.getDay() - 1;
+        // var d = new Date();
+        // var today: any = d.getDay() - 1;
         // this.weekDays.forEach((day, i) => {
         //   if (today === i) {
         //    dayToRemove = this.weekDays[i].slice(0, 3)
@@ -78,21 +99,23 @@ export class WeatherForecastComponent implements OnInit {
       
         
         
+      
         
-        this.foreCastList.push(foreCastObj)
+      
+       
        // console.log(this.foreCastList)
         
-        this.foreCastList.forEach((element:any, i:any) => {
-         // console.log(element.day)
-          if(element.day === dayToRemove.slice(0, 3)) {
-          //  console.log("here")
-            //console.log(this.foreCastList)
-          }
+        // this.foreCastList.forEach((element:any, i:any) => {
+        //  // console.log(element.day)
+        //   if(element.day === dayToRemove.slice(0, 3)) {
+        //   //  console.log("here")
+        //     //console.log(this.foreCastList)
+        //   }
          
         
-        });
+        // });
         
-        var filteredAry = this.foreCastList.filter((e:any) => e.day !== dayToRemove.slice(0, 3))
+      //  var filteredAry = this.foreCastList.filter((e:any) => e.day !== dayToRemove.slice(0, 3))
         //console.log(filteredAry)
 
         // const index = this.foreCastList.indexOf(dayToRemove.slice(0, 3));
