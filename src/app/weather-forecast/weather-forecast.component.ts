@@ -29,7 +29,7 @@ export class WeatherForecastComponent implements OnInit {
       data.properties.timeseries.forEach((element: any) => {
        
         if (element.time.includes("T12")) {
-          console.log(element)
+           console.log(element)
           this.weatherList.push(element)
         }// Get forecast at 12:00 
       });
@@ -38,8 +38,10 @@ export class WeatherForecastComponent implements OnInit {
        
 
         var d = new Date(day.time.slice(0, 10));
-      console.log(d.toString().slice(0, 4))
-        var dayName = this.weekDays[d.getDay()];
+      
+        console.log(d.toString().slice(0, 4))
+        // console.log(d.toString().slice(0, 4))
+        // var dayName = this.weekDays[d.getDay()];
         
         let dayObj: any = {
           nextDay: ""
@@ -58,7 +60,7 @@ export class WeatherForecastComponent implements OnInit {
           currentTemperatureMin: ""
         };
 
-        foreCastObj.day = dayName.slice(0, 3)
+       //foreCastObj.day = dayName.slice(0, 3)
         foreCastObj.currentTemperatureMin = String(day.data.next_6_hours.details.air_temperature_min).slice(0, 2)
         foreCastObj.currentTemperatureMax = String(day.data.next_6_hours.details.air_temperature_max).slice(0, 2)
         foreCastObj.temp = String(day.data.instant.details.air_temperature).slice(0, 2)
