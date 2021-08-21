@@ -25,29 +25,28 @@ export class WeatherForecastComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.apiCallForeCast().subscribe((data: any) => {
-     //s console.log(data.properties.timeseries)
+     
       data.properties.timeseries.forEach((element: any) => {
-     //   console.log(element.time)
+       
         if (element.time.includes("T12")) {
-          //console.log(element)
+          console.log(element)
           this.weatherList.push(element)
         }// Get forecast at 12:00 
       });
      // console.log(this.weatherList)
       this.weatherList.slice(0, 7).forEach((day: any) => {
-        //console.log(day.time)
+       
+
         var d = new Date(day.time.slice(0, 10));
-    
-        
-        
+      console.log(d.toString().slice(0, 4))
         var dayName = this.weekDays[d.getDay()];
         
         let dayObj: any = {
           nextDay: ""
         }
-        dayObj.nextDay = dayName
+        dayObj.nextDay = d.toString().slice(0, 4)
         this.daysList.push(dayObj)
-       // console.log(this.days)
+      
      
         //   console.log(day)
         let foreCastObj: any = {
@@ -71,7 +70,7 @@ export class WeatherForecastComponent implements OnInit {
         if(this.foreCastList.length === 7) {
           console.log("sev")
          
-          this.foreCastList.shift()
+         // this.foreCastList.shift()
        // console.log(this.foreCastList)
         }
        

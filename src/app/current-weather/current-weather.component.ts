@@ -35,6 +35,7 @@ export class CurrentWeatherComponent implements OnInit {
       var d = new Date();
       var today: any = d.getDay() - 1;
       let dateStr = d.toString().slice(7, 10);
+      console.log(dateStr)
 
       this.currentTime = new Date().toLocaleString().replace(',', '').slice(10, 16)
 
