@@ -24,16 +24,18 @@ export class WeatherForecastComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.apiCallForeCast().subscribe((data: any) => {
-
+     //s console.log(data.properties.timeseries)
       data.properties.timeseries.forEach((element: any) => {
         if (element.time.includes("T12")) {
+        
           this.weatherList.push(element)
         }// Get forecast at 12:00 
       });
+     // console.log(this.weatherList)
       this.weatherList.slice(0, 7).forEach((day: any) => {
         var d = new Date(day.time.slice(0, 10));
         var dayName = this.weekDays[d.getDay()];
-
+        console.log(day)
         let foreCastObj: any = {
           day: "",
           temp: "",
@@ -50,7 +52,57 @@ export class WeatherForecastComponent implements OnInit {
         foreCastObj.windSpeed = String(day.data.instant.details.wind_speed).slice(0, 1)
         foreCastObj.weatherIcon = day.data.next_6_hours.summary.symbol_code
 
+       
+        var dayToRemove = "Thursday"
+        
+        var d = new Date();
+        var today: any = d.getDay() - 1;
+        // this.weekDays.forEach((day, i) => {
+        //   if (today === i) {
+        //    dayToRemove = this.weekDays[i].slice(0, 3)
+        //   }
+        // })//Match current date with weekdays
+
+      //   let list: any = [];
+      //   list.push(foreCastObj)
+      // console.log(list)
+
+      //   list.forEach((weekDay:any, i:any) => {
+      //   //  console.log(weekDay.day)
+      //   //  console.log(dayToRemove.slice(0, 3))
+      //     if(weekDay.day !== dayToRemove.slice(0, 3)) {
+      //       console.log("here")
+      //      console.log(list.splice(i, 1))
+      //     }
+      //   })
+      
+        
+        
+        
         this.foreCastList.push(foreCastObj)
+       // console.log(this.foreCastList)
+        
+        this.foreCastList.forEach((element:any, i:any) => {
+         // console.log(element.day)
+          if(element.day === dayToRemove.slice(0, 3)) {
+          //  console.log("here")
+            //console.log(this.foreCastList)
+          }
+         
+        
+        });
+        
+        var filteredAry = this.foreCastList.filter((e:any) => e.day !== dayToRemove.slice(0, 3))
+        //console.log(filteredAry)
+
+        // const index = this.foreCastList.indexOf(dayToRemove.slice(0, 3));
+        //   if (index > -1) {
+        //     this.foreCastList.splice(index, 1);
+        // }
+        // console.log(this.foreCastList)
+      
+      
+        //  console.log(this.foreCastList)
       });//Weatherlist 7 days forecast
     })//ApiCall Function
   }//ngOnInit
