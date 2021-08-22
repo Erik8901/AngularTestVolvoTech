@@ -16,11 +16,20 @@ constructor(private api: GetApiService) { }
   ngOnInit(): void {
       this.api.apiCallForeCast().subscribe((data: any) => {
           data.properties.timeseries.forEach((element: any) => {
-       
+         
+            let today = new Date().toISOString().slice(8, 10)
+            let todayApi = element.time.slice(8, 10)
+           
+            if(todayApi !== today) {
+              
               if(element.time.includes("T12")) {
-               console.log(element)
-                  this.weatherList.push(element)
-          }//Get forecast at 12:00 + 6hours
+               
+                this.weatherList.push(element)
+                console.log(this.weatherList)
+        }//Get forecast at 12:00 + 6hours
+            
+      }
+             
       });
       this.weatherList.length = 7
       this.weatherList.forEach((day: any) => {
