@@ -22,9 +22,11 @@ constructor(private api: GetApiService) { }
                   this.weatherList.push(element)
           }//Get forecast at 12:00 + 6hours
       });
-      
-    this.weatherList.slice(1, 8).forEach((day: any) => {
+      this.weatherList.length = 7
+      this.weatherList.forEach((day: any) => {
         //Weatherlist 7 days forecast
+        //.slice(1, 8)
+        //.slice(0, 7)
         var d = new Date(day.time);
         // console.log(d.toString().slice(0, 4))
         // var dayName = this.weekDays[d.getDay()];
