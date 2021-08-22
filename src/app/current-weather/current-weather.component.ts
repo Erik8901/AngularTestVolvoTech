@@ -35,16 +35,9 @@ export class CurrentWeatherComponent implements OnInit {
       var d = new Date();
       var today: any = d.getDay() - 1;
       let dateStr = d.toString().slice(7, 10);
-      console.log(dateStr)
+      
 
       this.currentTime = new Date().toLocaleString().replace(',', '').slice(10, 16)
-
-      this.weekDays.forEach((day, i) => {
-        if (today === i) {
-          this.currentDay = this.weekDays[i]
-        }
-      })//Match current date with weekdays
-
 
       var dayName = this.weekDays[new Date().getDay()];
       this.currentDay = dayName
