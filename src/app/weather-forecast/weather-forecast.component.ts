@@ -25,7 +25,8 @@ constructor(private api: GetApiService) { }
               if(element.time.includes("T12")) {
                
                 this.weatherList.push(element)
-                console.log(this.weatherList)
+              
+             
         }//Get forecast at 12:00 + 6hours
             
       }
