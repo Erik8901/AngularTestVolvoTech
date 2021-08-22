@@ -34,7 +34,7 @@ export class WeatherForecastComponent implements OnInit {
         }// Get forecast at 12:00 
       });
      // console.log(this.weatherList)
-      this.weatherList.slice(0, 7).forEach((day: any) => {
+      this.weatherList.slice(1, 8).forEach((day: any) => {
        
 
         var d = new Date(day.time.slice(0, 10));

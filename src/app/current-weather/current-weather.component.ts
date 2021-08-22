@@ -8,13 +8,13 @@ import { GetApiService } from '../get-api.service'
 })
 export class CurrentWeatherComponent implements OnInit {
   weekDays = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday"
   ];
   currentDay = ""
   currentTime = ""
@@ -44,6 +44,10 @@ export class CurrentWeatherComponent implements OnInit {
           this.currentDay = this.weekDays[i]
         }
       })//Match current date with weekdays
+
+
+      var dayName = this.weekDays[new Date().getDay()];
+      this.currentDay = dayName
 
       data.properties.timeseries.forEach((element: any) => {
 
