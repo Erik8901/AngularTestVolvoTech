@@ -7,7 +7,7 @@ import { GetApiService } from '../get-api.service'
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent implements OnInit {
-  weekDays = [
+  weekDays: Array<String> = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -16,13 +16,13 @@ export class CurrentWeatherComponent implements OnInit {
     "Friday",
     "Saturday",
   ];
-  currentDay = ""
-  currentTime = ""
-  currentTemperatureMax = ""
-  currentTemperatureMin = ""
-  currentSky = ""
-  currentWindSpeed = ""
-  currentIcon = ""
+  currentDay: string = ""
+  currentTime: string = ""
+  currentTemperatureMax: string = ""
+  currentTemperatureMin: string = ""
+  currentSky: string = ""
+  currentWindSpeed: string = ""
+  currentIcon: string = ""
 
   constructor(private api: GetApiService) {
 
@@ -31,26 +31,23 @@ export class CurrentWeatherComponent implements OnInit {
   ngOnInit(): void {
     // Both ApiCallCurrent and ApicallForecast work, however forecast is more accurate.
     this.api.apiCallForeCast().subscribe((data: any) => {
-      //console.log("Get Api Current: ", data);
+      //Compare todays date with date from API
       var d = new Date();
-      var today: any = d.getDay() - 1;
       let dateStr = d.toString().slice(7, 10);
-      
-
+     
       this.currentTime = new Date().toLocaleString().replace(',', '').slice(10, 16)
 
       var dayName = this.weekDays[new Date().getDay()];
-      this.currentDay = dayName
+      this.currentDay = String(dayName)
 
       data.properties.timeseries.forEach((element: any) => {
-
         if (Number(element.time.slice(8, 10)) === Number(dateStr)) {
 
           let timeNowFromApi = " " + String(element.time.slice(11, 13))
           let currentTimeNow = String(this.currentTime.slice(0, 3))
 
           if (currentTimeNow.includes(":")) {
-            let morningTime = "0" + currentTimeNow.replace(":", " ")
+          let morningTime = "0" + currentTimeNow.replace(":", " ")
             if (Number(timeNowFromApi) === Number(morningTime)) {
               this.currentTemperatureMin = String(element.data.next_6_hours.details.air_temperature_min).slice(0, 2)
               this.currentTemperatureMax = String(element.data.next_6_hours.details.air_temperature_max).slice(0, 2)
@@ -78,4 +75,4 @@ export class CurrentWeatherComponent implements OnInit {
 
     })//apiCallForeCast
   }//ngOnInit
-}//CurrentWeatherComponent 
+}//CurrentWeatherComponent
